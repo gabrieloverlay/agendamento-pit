@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema de Agendamento</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<!-- ETAPA 1: ESTRUTURA (HTML) -->
+<header class="topo">
+  <div class="wrap">
+    <h1>Sistema de Agendamento</h1>
+    <p>Organize clientes, serviços, profissionais e horários em um só lugar.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="aviso" class="aviso" role="status"></div>
+
+  <section class="resumo" aria-label="Resumo">
+    <div class="stat"><span>Clientes</span><strong id="n-clientes">0</strong></div>
+    <div class="stat"><span>Serviços</span><strong id="n-servicos">0</strong></div>
+    <div class="stat"><span>Profissionais</span><strong id="n-profs">0</strong></div>
+    <div class="stat"><span>Agendamentos</span><strong id="n-agend">0</strong></div>
+  </section>
+
+  <section class="cadastros">
+    <form id="f-cliente" class="card" novalidate>
+      <h2>Cadastrar cliente</h2>
+      <label for="c-nome">Nome</label>
+      <input id="c-nome" type="text" placeholder="Nome completo" autocomplete="off">
+      <label for="c-tel">Telefone</label>
+      <input id="c-tel" type="tel" placeholder="(00) 00000-0000" inputmode="numeric">
+      <label for="c-email">E-mail (opcional)</label>
+      <input id="c-email" type="email" placeholder="cliente@email.com">
+      <button class="btn" type="submit">Salvar cliente</button>
+    </form>
+
+    <form id="f-servico" class="card" novalidate>
+      <h2>Cadastrar serviço</h2>
+      <label for="s-nome">Nome do serviço</label>
+      <input id="s-nome" type="text" placeholder="Ex.: Consulta" autocomplete="off">
+      <label for="s-desc">Descrição (opcional)</label>
+      <input id="s-desc" type="text" placeholder="Breve descrição">
+      <label for="s-dur">Duração (minutos)</label>
+      <input id="s-dur" type="number" min="5" step="5" value="30">
+      <button class="btn" type="submit">Salvar serviço</button>
+    </form>
+
+    <form id="f-prof" class="card" novalidate>
+      <h2>Cadastrar profissional</h2>
+      <label for="p-nome">Nome</label>
+      <input id="p-nome" type="text" placeholder="Nome do profissional" autocomplete="off">
+      <label for="p-contato">Contato (opcional)</label>
+      <input id="p-contato" type="text" placeholder="Telefone ou e-mail">
+      <button class="btn" type="submit">Salvar profissional</button>
+    </form>
+  </section>
+
+  <section class="agenda">
+    <form id="f-agend" class="card" novalidate>
+      <h2>Novo agendamento</h2>
+      <label for="a-cliente">Cliente</label>
+      <select id="a-cliente"></select>
+      <label for="a-servico">Serviço</label>
+      <select id="a-servico"></select>
+      <label for="a-prof">Profissional</label>
+      <select id="a-prof"></select>
+      <label for="a-data">Dia</label>
+      <input id="a-data" type="date">
+      <label id="lbl-h">Horário</label>
+      <div id="slots" class="slots" role="group" aria-labelledby="lbl-h"></div>
+      <button class="btn" type="submit">Confirmar agendamento</button>
+    </form>
+
+    <div class="card">
+      <h2>Agendamentos</h2>
+      <ul id="lista"></ul>
+    </div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
