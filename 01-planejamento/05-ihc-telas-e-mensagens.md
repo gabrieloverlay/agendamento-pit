@@ -58,3 +58,8 @@ flowchart TD
 3. Adicionar legenda dos horários (livre, ocupado, selecionado) e esconder horários que já passaram hoje.
 4. Separar "Próximos" e "Histórico" na lista, com filtros.
 5. Permitir editar e excluir cadastros.
+
+## Alterações após o feedback dos testes
+- **Barra lateral de navegação** (sugestão de João Lucas): o sistema deixou de ser uma tela única e passou a ter três seções, Cadastros, Agendar e Agenda do dia. Em telas pequenas, a barra vira um menu horizontal no topo.
+- **Agenda do dia em grade:** nova seção com os horários nas linhas e os profissionais nas colunas, mostrando quem está livre e quem está ocupado.
+- **Confirmação por WhatsApp:** botão em cada agendamento que abre uma conversa com a mensagem de confirmação pronta.

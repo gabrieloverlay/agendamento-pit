@@ -17,6 +17,8 @@ serviço para bloquear horários consecutivos.
 | RF05 | Agendar cliente, serviço, profissional, dia e horário |
 | RF06 | Cancelar agendamento, com confirmação |
 | RF07 | Exibir resumo com a quantidade de clientes, serviços, profissionais e agendamentos |
+| RF08 | Exibir a agenda do dia em grade, com horários nas linhas e profissionais nas colunas |
+| RF09 | Abrir o WhatsApp do cliente com a mensagem de confirmação do agendamento pronta |
 
 ## Requisitos não funcionais
 | Código | Requisito |
