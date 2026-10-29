@@ -50,6 +50,21 @@ def horarios():
     return jsonify([{"hora": h, "livre": h not in ocupados} for h in HORARIOS])
 
 
+@bp.get("/api/agenda")
+def agenda_do_dia():
+    try:
+        dia = date.fromisoformat(request.args.get("data", ""))
+    except ValueError:
+        return jsonify({"erro": "Data inválida."}), 400
+    ags = Agendamento.query.filter_by(data=dia).order_by(Agendamento.hora)
+    return jsonify({
+        "data": dia.isoformat(),
+        "horarios": HORARIOS,
+        "profissionais": [p.to_dict() for p in Profissional.query.order_by(Profissional.id)],
+        "agendamentos": [a.to_dict() for a in ags],
+    })
+
+
 @bp.app_errorhandler(ValueError)
 def erro_validacao(e):
     return jsonify({"erro": str(e)}), 400

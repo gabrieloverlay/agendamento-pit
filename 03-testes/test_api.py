@@ -72,3 +72,27 @@ def test_horarios_marcam_ocupado_e_cancelar_libera(c):
 
 def test_cancelar_inexistente_retorna_404(c):
     assert c.delete("/api/agendamentos/999").status_code == 404
+
+
+def test_agenda_do_dia_lista_agendamentos(c):
+    c.post("/api/agendamentos", json=base(c))
+    r = c.get(f"/api/agenda?data={FUTURO}")
+    dados = r.get_json()
+    assert r.status_code == 200
+    assert dados["horarios"][0] == "09:00"
+    assert len(dados["profissionais"]) == 1
+    assert dados["agendamentos"][0]["cliente"] == "Maria"
+
+
+def test_agenda_do_dia_sem_agendamentos(c):
+    base(c)
+    assert c.get(f"/api/agenda?data={FUTURO}").get_json()["agendamentos"] == []
+
+
+def test_agenda_rejeita_data_invalida(c):
+    assert c.get("/api/agenda?data=abc").status_code == 400
+
+
+def test_agendamento_traz_telefone_para_whatsapp(c):
+    r = c.post("/api/agendamentos", json=base(c))
+    assert r.get_json()["cliente_telefone"] == "(11) 91234-5678"

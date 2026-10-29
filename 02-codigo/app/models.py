@@ -126,6 +126,7 @@ class Agendamento(db.Model):
             "id": self.id, "data": self.data.isoformat(), "hora": self.hora,
             "cliente_id": self.cliente_id, "servico_id": self.servico_id,
             "profissional_id": self.profissional_id,
-            "cliente": self.cliente.nome, "servico": self.servico.nome,
+            "cliente": self.cliente.nome, "cliente_telefone": self.cliente.telefone,
+            "servico": self.servico.nome,
             "profissional": self.profissional.nome,
         }
