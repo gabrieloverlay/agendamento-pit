@@ -52,3 +52,27 @@ li:first-child{border-top:0}
 .det{color:var(--muted);font-size:.9rem}
 .vazio{color:var(--muted)}
 .cancel{background:none;border:1px solid var(--line);color:var(--erro);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+
+/* Barra lateral e seções (sugestão de João Lucas) */
+[hidden]{display:none !important}
+.lateral{background:var(--azul);color:#fff;border-bottom:1px solid rgba(255,255,255,.2);padding:10px 12px}
+.marca{font-weight:800;margin-bottom:6px}
+.lateral nav{display:flex;gap:6px;overflow-x:auto}
+.lateral button{flex:0 0 auto;background:none;border:0;color:#fff;font:inherit;font-weight:600;padding:9px 14px;border-radius:8px;cursor:pointer;text-align:left}
+.lateral button:hover{background:rgba(255,255,255,.12)}
+.lateral button[aria-current="page"]{background:rgba(255,255,255,.22)}
+@media(min-width:900px){
+  .app{display:grid;grid-template-columns:210px 1fr}
+  .lateral{position:sticky;top:0;height:100vh;border-bottom:0;border-right:1px solid rgba(255,255,255,.2);padding:20px 12px}
+  .lateral nav{flex-direction:column}
+  .marca{margin-bottom:16px;font-size:1.1rem}
+}
+.acoes{display:flex;gap:8px;align-items:center}
+.wpp{padding:6px 10px;border:1px solid var(--line);border-radius:8px;color:var(--ok);font-weight:600;font-size:.9rem;text-decoration:none}
+.wpp:hover{background:var(--ok-bg)}
+.grade-wrap{overflow-x:auto;margin-top:12px}
+table.grade{width:100%;border-collapse:collapse;min-width:480px}
+.grade th,.grade td{border:1px solid var(--line);padding:8px 10px;text-align:left;font-size:.9rem}
+.grade th{background:var(--bg)}
+.grade td.livre{color:var(--muted)}
+.grade td.ocupado{background:var(--ok-bg);color:var(--ok);font-weight:600}

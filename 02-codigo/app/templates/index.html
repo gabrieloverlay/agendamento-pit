@@ -8,25 +8,32 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<!-- ETAPA 1: ESTRUTURA (HTML) -->
-<header class="topo">
-  <div class="wrap">
-    <h1>Sistema de Agendamento</h1>
-    <p>Organize clientes, serviços, profissionais e horários em um só lugar.</p>
-  </div>
-</header>
-
-<main class="wrap">
-  <div id="aviso" class="aviso" role="status"></div>
-
-  <section class="resumo" aria-label="Resumo">
+<div class="app">
+  <aside class="lateral">
+    <div class="marca">Agendamento</div>
+    <nav aria-label="Seções do sistema">
+      <button id="nav-cadastros" type="button">Cadastros</button>
+      <button id="nav-agendar" type="button">Agendar</button>
+      <button id="nav-agenda" type="button">Agenda</button>
+    </nav>
+  </aside>
+  <div class="conteudo">
+    <header class="topo">
+      <div class="wrap">
+        <h1>Sistema de Agendamento</h1>
+        <p>Organize clientes, serviços, profissionais e horários em um só lugar.</p>
+      </div>
+    </header>
+    <main class="wrap">
+      <div id="aviso" class="aviso" role="status"></div>
+      <section class="resumo" aria-label="Resumo">
     <div class="stat"><span>Clientes</span><strong id="n-clientes">0</strong></div>
     <div class="stat"><span>Serviços</span><strong id="n-servicos">0</strong></div>
     <div class="stat"><span>Profissionais</span><strong id="n-profs">0</strong></div>
     <div class="stat"><span>Agendamentos</span><strong id="n-agend">0</strong></div>
   </section>
 
-  <section class="cadastros">
+      <section id="sec-cadastros" class="cadastros">
     <form id="f-cliente" class="card" novalidate>
       <h2>Cadastrar cliente</h2>
       <label for="c-nome">Nome</label>
@@ -59,7 +66,7 @@
     </form>
   </section>
 
-  <section class="agenda">
+      <section id="sec-agendar" class="agenda" hidden>
     <form id="f-agend" class="card" novalidate>
       <h2>Novo agendamento</h2>
       <label for="a-cliente">Cliente</label>
@@ -80,7 +87,18 @@
       <ul id="lista"></ul>
     </div>
   </section>
-</main>
+
+      <section id="sec-agenda" hidden>
+        <div class="card">
+          <h2>Agenda do dia</h2>
+          <label for="g-data">Dia</label>
+          <input id="g-data" type="date">
+          <div id="grade" class="grade-wrap"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
